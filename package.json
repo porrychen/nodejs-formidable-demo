@@ -1,0 +1,13 @@
+{
+    "name": "nodejs-formidable"
+  , "version": "0.0.1"
+  , "keywords": ["nodejs", "formidable"]
+  , "homepage": "https://github.com/porrychen/nodejs-formidable-demo"
+  , "dependencies": {
+      "express": "2.5.2"
+    , "sass": ">= 0.5.0"
+    , "jade": ">= 0.20.0"
+    , "mongoose": ">= 2.4.8"
+    , "formidable": ">= 1.0.8"
+  }
+}
