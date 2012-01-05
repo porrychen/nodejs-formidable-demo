@@ -5,11 +5,39 @@
 
 var express = require('express'),
     routes = require('./routes'),
-    formidable = require('formidable');
+    formidable = require('formidable'),
+    url = require('url'),
+    config = require('./config'),
+    util = require('util'),
+    test1 = require('./test1');
 
-var app = module.exports = express.createServer(function(request, response){
+var app = module.exports = express.createServer();
 
-});
+//function(req, res){
+//    var uri = req.url;//url.parse(req.url).pathname;
+//
+//    if (uri == '/upload' && request.method.toLowerCase() == 'post') {
+//        //Parse Upload
+//        var form = new formidable.IncomingForm();
+//        form.uploadDir = config.files.upload_dir;
+//        form.maxFieldsSize = config.files.max_fields_size;
+
+    //Process listener
+//        form.addListener('progress', function(bytesReceived, bytesExpected) {
+//            //progress as percentage
+//            var progress = (bytesReceived / bytesExpected * 100).toFixed(2);
+//            mb = (bytesExpected / 1024 / 1024).toFixed(1);
+//            util.debug('Uploading ' + mb + 'mb (' + progress + '%)\015');
+//        });
+
+//        form.parse(request);
+//
+//    } else {
+//        if (uri == '/') {
+//            res.render('index', {title: 'First TEST PAGE'});
+//        }
+//    }
+//}
 
 // Configuration
 
@@ -32,9 +60,12 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
+var t = new test1('porry');
+console.log(t.name);
+t.see();
 // Routes
 
 app.get('/', routes.index);
 
-app.listen(3000);
+app.listen(config.port);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
