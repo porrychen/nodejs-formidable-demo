@@ -1,0 +1,30 @@
+#!/bin/bash
+DIR=/root/spaces/nodejs-formidable-demo
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+NODE_PATH=/root/spaces/nodejs-formidable-demo/node_modules
+NODE=/usr/bin/node
+
+test -x $NODE || exit 0
+
+function start_app {
+  forever start "$DIR/app.js" -l "$DIR/logs/nodejs-formidable-demo.log" -o "$DIR/logs/nodejs-formidable-demo.out.log" -e "$DIR/logs/nodejs-formidable-demo.err.log"
+}
+
+function stop_app {
+  forever stop "$DIR/app.js" 
+}
+
+case $1 in
+  start)
+    start_app ;;
+  stop)
+    stop_app ;;
+  restart)
+    stop_app
+    start_app
+    ;;
+  *)
+   echo "usage: clearstonecc {start|stop}" ;;
+ 
+esac
+exit 0
